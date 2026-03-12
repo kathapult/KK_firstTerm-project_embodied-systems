@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Embodied Systems – Sensing the Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100" tabindex="0">
+    <header>
+        <!-- <h1>Embodied Systems – Sensing the Digital</h1> -->
+        <img src="img/title.png" width="420px">
+        <p class="subtitle">A body-driven sound instrument using Kinect motion tracking and real-time audio synthesis.
+        </p>
+
+        <div id="navbar" class="sidebar ">
+            <!-- <p>First Term Project</p> -->
+            <a class="nav-link" href="#concept">concept</a>
+            <a class="nav-link" href="#technical-implementation">technical implementation</a>
+            <a class="nav-link" href="#context">related work</a>
+            <a class="nav-link" href="#results">results</a>
+            <a class="nav-link" href="#discussion">discussion</a>
+            <a class="nav-link" href="#future-work">future Work</a>
+        </div>
+    </header>
+
+    <!-- <section class="hero">
+       <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item full" src="img/hero-placeholder.mp4" title="Hero" frameborder="0" allow=" clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div> 
+    </section> -->
+
+    <section id="concept">
+        <h2>Concept</h2>
+        <p>
+            <span>Embodied Systems - Sensing the digital</span> is an experimental research project exploring the
+            relationship between body movement and sound.
+            Using motion tracking and skeleton data, physical movement is translated into sound parameters in real time.
+            It examines how qualities such as speed, intensity, stillness, and spatial presence shape the behavior of
+            sound layers,
+            transforming bodily gestures into an expressive instrument that can be played through movement.
+            <br><br>
+            The implementation deals with the questions of where emotions and bodily states are perceived in the body,
+            where they are located,
+            and how they can be expressed through movement and spatial presence. The aim is to make this interplay
+            audible in an experiential way
+            and to inspire people to explore embodiment. Its thematic approach addresses the growing bodily
+            disconnection in digital and
+            data-driven environments by fostering embodied awareness through movement and sound.
+            Central questions guiding the project are: <br><br>
+
+            <span>How can the body, in its vulnerable and resistant presence, become visible or hearable through
+                real-time processes?</span>
+            <br>
+            <span>How can a creative interpretation of motion data processing make the body feel again / more throgh
+                movement?</span>
+        </p>
+    </section>
+
+    <section id="technical-implementation">
+        <h2>Technical Implementation</h2>
+        <p>
+            The system consists of three main components: motion tracking (Kinect V2 Sensor), data processing (TouchDesigner) and sound generation (Ableton Live). The diagram below illustrates the data flow from performer movement to sound synthesis
+       <br><br>
+            <!-- <ul>
+            <li>motion tracking (Kinect V2 Sensor)</li>
+            <li>data processing (TouchDesigner)</li>
+            <li>sound generation (Ableton Live)</li>
+        </ul> -->
+             </p>
+
+        <div id="diagram">
+
+            <svg class="connections">
+
+            <line x1="10%" y1="50%" x2="30%" y2="50%" />
+            <line x1="30%" y1="50%" x2="50%" y2="50%" />
+            <line x1="50%" y1="50%" x2="70%" y2="50%" />
+            <line x1="70%" y1="50%" x2="90%" y2="50%" />
+
+            </svg>
+
+            <div class="node-container">
+
+                <div class="node outline">Performer</div>
+                <div class="node pointer">Kinect V2</div>
+                <div class="node pointer">TouchDesigner</div>
+                <div class="node pointer">Ableton Live</div>
+                <div class="node outline">Sound Output</div>
+
+            </div>
+
+        </div>
+
+        <div class="pt-3">
+            <h4>Motion Tracking (Kinect V2 Sensor)</h4>
+            <p> The system uses the Kinect V2 sensor to track the performer as a 3D skeleton.
+                The Kinect provides real-time joint positions (X, Y, Z) for up to 25 body joints.In this step the raw
+                skeletal data is captured continuously.
+                Each joint delivers absolute spatial coordinates, which form the basis for all later calculations. </p>
+            <img src="img/motion-tracking.png" class="full"> <br><br>
+
+            <p>
+                <b>Main tasks in this stage:</b>
+            <ul>
+                <li>Capture skeletal positions of hands, head, torso, etc.</li>
+                <li>Extract joint coordinates for further processing</li>
+                <li>Provide stable real-time input to TouchDesigner</li>
+            </ul>
+            </p>
+        </div>
+        <div class="pt-3">
+            <h4>Data Processing (TouchDesigner)</h4>
+            <p> TouchDesigner handles all data interpretation, transformation and motion parameter extraction. The raw
+                joint positions from the Kinect are processed into relational parameters.
+                Instead of using absolute coordinates, the system calculates relative body parameters. These relational measures are more intuitive,
+                stable for sound control. </p>
+            <img src="img/final-parameters.png" class="full"> <br><br>
+            <b>Main tasks in this stage:</b>
+            <ul>
+                <li>Filter jitter and smooth motion data</li>
+                <li>Compute relational distances between joints</li>
+                <li>Normalize values to a consistent 0–1 range</li>
+                <li>Send real-time OSC messages to Ableton Live</li>
+            </ul>
+        </div>
+
+        <div class="pt-3">
+            <h4>Sound Synthesis (Ableton Live)</h4>
+            <p> Ableton Live receives the processed motion parameters and maps them to different sound layers. Movements
+                influence continuous sound behaviors instead of triggering discrete samples.
+                Several sound layers respond to different aspects of the performer’s movement, such as heartbeat
+                intensity, breathing noise, drone expansion, or spatial panning. Each layer is controlled by a
+                corresponding OSC parameter. </p>
+            <img src="img/sound_synthesis.png" class="full"> <br><br>
+            <b>Main tasks in this stage:</b>
+            <ul>
+                <li>Receive OSC parameters from TouchDesigner</li>
+                <li>Map values to volume, filter, panning, effects, etc.</li>
+                <li>Blend multiple sound layers into a unified sound experience</li>
+            </ul>
+        </div>
+
+        <p> Together, these three components form a real-time system that translates movement into sound. The
+            performer’s motion is tracked, processed into meaningful parameters, and transformed into auditory
+            expression. This pipeline allows the body to function as an expressive, responsive sound instrument. </p>
+    </section>
+
+    <section id="context">
+        <h2>Related work</h2>
+        <p>
+            <span>Embodied Systems - Sensing the digital</span> is situated in the field of embodied interaction and
+            interactive performance with a relationship between motion, emotion and sound. The human body becomes the primary interface by itself for generating or modifying sound.
+            <br><br>
+            <b>This project is mainly inspirated by following artists and projects:</b>
+        </p>
+
+        <div class="related-work margin-md">
+
+            <h4>movement & sound</h4>
+            <div class="row g-4">
+
+                <div class="col-md-6">
+                    <div class="card border-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/zGUFKJBYZPs" title="Touch me Hear"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body p-2">
+                            <strong>Touch Me Hear</strong><br>
+                            <small>Juraj Kojs</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card border-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/KAMdbeH6wbY" title="Sensodance"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body p-2">
+                            <strong>Sensodance</strong><br>
+                            <small>Mark Hertensteiner</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h4 class="mt-5">embodiment</h4>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+                    <div class="card border-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/pMuvrDwhp4w" title="Pixels"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body p-2">
+                            <strong>Pixels</strong><br>
+                            <small>Claire Bardainne & Adrien Mondot</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card border-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/VIDEOID" title="Just Your Shadow"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body p-2">
+                            <strong>Just Your Shadow</strong><br>
+                            <small>Claire Bardainne & Adrien Mondot</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    </section>
+
+    <section id="results">
+        <h2>Results</h2>
+        <p>
+            While the project initially started as a thematic and technical exploration, the resulting system evolved into a performative prototype that can be used as a body-driven sound instrument.
+            Through collaboration with an actor, the interaction design developed into an open and playful setup that encourages experimentation with movement and sound.
+            This suggests potential applications in theatre, performance art and stage-based media environments.
+        </p>
+
+        <!-- <div class="grid">
+            <img src="img/skeleton.png">
+            <img src="img/touchdesigner.png">
+            <img src="img/ableton.png">
+        </div> -->
+
+        <p>
+            The system was tested with a performer and proved to be intuitive when using
+            relational movement parameters and a limited set of sound mappings.
+        </p>
+
+        <div class="subsection pt-3">
+            <h4>Motion Parameter Extraction</h4>
+            <p>
+                Initial experiments used absolute joint coordinates from the Kinect sensor.
+                However, this approach proved unstable and difficult to control performatively.
+            </p>
+            <p>
+                The system therefore switched to <b>relational body parameters</b>, which
+                describe spatial relationships between body parts.
+            </p>
+            Examples:
+            <ul>
+                <li>Distance between hand and head</li>
+                <li>Distance between hands</li>
+                <li>Distance between hand and torso</li>
+            </ul>
+
+            <p> Distances are calculated using the Euclidean distance formula:</p>
+
+            <pre>distance = sqrt((dx² + dy² + dz²))</pre>
+
+            <p>These values are filtered and normalized before being mapped to sound parameters.</p>
+        </div>
+
+        <div class="subsection pt-3">
+         <h4>Sound Mapping</h4>
+
+            <p>
+                Movement parameters control several sound layers inside Ableton Live.
+                Instead of simple trigger interactions, movements influence continuous sound behavior.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Movement Parameter</th>
+                    <th>Sound Control</th>
+                </tr>
+
+                <tr>
+                    <td>Hand ↔ Head distance</td>
+                    <td>Heartbeat intensity</td>
+                </tr>
+
+                <tr>
+                    <td>Hand ↔ Torso distance</td>
+                    <td>Breath / noise layer</td>
+                </tr>
+
+                <tr>
+                    <td>Distance between hands</td>
+                    <td>Drone expansion</td>
+                </tr>
+
+                <tr>
+                    <td>Left / right difference</td>
+                    <td>Stereo panning</td>
+                </tr>
+
+            </table>
+        </div>
+
+
+    </section>
+
+
+    <section id="discussion">
+        <h2>Discussion</h2>
+
+        <p>Several insights emerged during development:</p>
+
+        <ul>
+            <li><b>Relational body parameters are more intuitive</b> than absolute spatial
+                coordinates.</li>
+
+            <li><b>Fewer sound parameters improve performability.</b> Systems with too many
+                mappings became difficult to control.</li>
+
+            <li><b>Embodied sound metaphors help perception.</b> Sounds such as heartbeat or
+                breath create an immediate emotional understanding for both performer and
+                audience.</li>
+        </ul>
+    </section>
+
+
+
+    <section id="future-work">
+        <h2>Future Work</h2>
+    
+        <div class="subsection pt-3">
+            <h4>Technical Development</h4>
+            <p> Future work could focus on improving the processing and interpretation of motion data, for instance more refined filtering, additional motion parameters, and more complex mappings between bodily movement and sound. 
+                Also the sound design offers room for expansion and experimentation. Unfortunately, the original idea of creating a comprehensive spatial sound concept was too extensive for the time frame of the project. 
+                The setup could be used as a starting point to create an expanded spatial concept that also includes conditional parameters beyond simple distance relationships, for example incorporating movement speed or patterns of movement or key points in space. </p>
+        </div>
+        <div class="subsection pt-3">
+            <h4>Performative Development</h4>
+            <p> The system is currently being further developed within a theatre project together with the acting class by Lara Martelli Hisleiter of the Filmuniversity Babelsberg. In collaboration with the actor Riccardo Campione, the setup will be adapted and refined for a solo stage performance e.g. by improving the system’s reliability in a live theatre context. The performance itself explores themes of climate change and climate migration. </p>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>
+            Project by Katharina Kleinhans
+            <br>
+            First Term Project WiSe 25/26 | Filmuniversität KONRAD WOLF Babelsberg
+        </p>
+    </footer>
+
+    <script type="module" src="js/diagram.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

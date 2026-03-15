@@ -1,227 +1,862 @@
-/* Variables */
 :root {
-    --black: #000000;
-    --darkgrey: #343434;
-    --grey: #808080;
-    --white: #d7d7d7;
+  --black: #000;
+  --darkgrey: #343434;
+  --grey: #808080;
+  --white: #d7d7d7;
+  --sidebar-width: 200px;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    line-height: 1.6;
-    max-width: 900px;
-    margin: auto;
-    padding: 40px;
-    background-color: var(--black);
-    color: var(--white);
-    scroll-behavior: smooth;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  line-height: 1.6;
+  background: var(--black);
+  color: var(--white);
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-    font-size: 2.2rem;
-}
-
-h2 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-}
-
-h4 {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    font-style: 600;
-}
-
-span {
-    font-style: italic;
-}
-
-.subtitle {
-    font-size: 18px;
-    color: var(--grey);
-    margin-bottom: 40px;
-}
-
-/* Navbar */
+/* --- Sidebar --- */
 
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 220px;
-    background: var(--black);
-    padding-top: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--black);
+  padding: 40px 0;
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 1px solid var(--darkgrey);
 }
 
 .sidebar a {
-    display: block;
-    color: var(--grey);
-    padding: 12px 20px;
-    text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  color: var(--grey);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
 }
 
-.sidebar a:hover {
-    color: var(--white);
+.sidebar a:hover,
+.nav-link.active {
+  color: var(--white);
 }
 
-.nav-link {
-transition: color 0.2s;
+/* --- Layout --- */
+
+.hero-header,
+section,
+footer {
+  margin-left: var(--sidebar-width);
 }
 
-.nav-link.active{
-    color: var(--white);
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 40px;
 }
-
-.content {
-    margin-left: 240px;
-    padding: 40px;
-}
-
-
 
 section {
-    padding-top: 30px;
-    padding-bottom: 90px;
-    border-top: 1px solid var(--grey);
+  border-top: 1px solid var(--grey);
 }
 
+section .inner {
+  padding-bottom: 90px;
+}
 
+footer .inner {
+  padding-top: 0;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #777;
+}
 
+/* --- Typography --- */
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+h5 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+#discussion h4 {
+  margin-top: 2rem;
+}
+
+.section-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+.section-intro {
+  margin-bottom: 2rem;
+}
+
+.subsection {
+  margin-top: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+span {
+  font-style: italic;
+}
 
 .full {
-    width: 100%;
-    margin-top: 20px;
+  width: 100%;
+  margin-top: 20px;
+  display: block;
 }
 
-
-.grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-
-    margin-top: 20px;
-
+.caption {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 6px;
 }
 
+/* --- Hero --- */
 
-.grid img {
-
-    width: 100%;
-
+.eyebrow {
+  font-size: 0.85rem;
+  color: var(--grey);
+  margin-bottom: 1rem;
 }
 
-
-table {
-
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-
+.hero-video {
+  margin: 1.5rem 0 2rem 0;
 }
 
-td,
-th {
-
-    border: 1px solid #ddd;
-    padding: 10px;
-
+.hero-video video {
+  width: 100%;
+  display: block;
 }
 
-th {
-    background: #eee;
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--grey);
+  margin-bottom: 1rem;
 }
 
-
-footer {
-
-    margin-top: 100px;
-    font-size: 14px;
-    color: #777;
-
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.5rem;
 }
 
-/* diagram */
+.hero-tags span {
+  font-style: normal;
+  background: var(--darkgrey);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* --- Diagram --- */
+
 #diagram {
-    position:relative;
-    width:100%;
-    height:200px;
+  position: relative;
+  width: 100%;
+  margin: 2rem 0;
 }
 
 .node-container {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    height:100%;
-    position:relative;
-    z-index:2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  gap: 8px;
 }
 
 .node {
-    background:var(--darkgrey);
-    color:var(--white);
-    padding:8px 16px;
-    border-radius:6px;
-    font-family:sans-serif;
+  background: var(--darkgrey);
+  color: var(--white);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
 }
-.node p {
-    
-    font-weight: 600;
-}
-.pointer:hover{
-    cursor: pointer;
+
+.node a {
+  color: var(--white);
 }
 
 .outline {
-    background: var(--black);
-    border:1px solid var(--darkgrey);
+  background: var(--black);
+  border: 1px solid var(--darkgrey);
 }
 
 .connections {
-    position:absolute;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index:1;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
-line{
-    stroke:var(--white);
-    stroke-width:2;
-    stroke-dasharray:6;
-    animation:dataflow 2s linear infinite;
+line {
+  stroke: var(--white);
+  stroke-width: 2;
+  stroke-dasharray: 6;
+  animation: dataflow 2s linear infinite;
 }
 
-@keyframes dataflow{
-
-    from{
-    stroke-dashoffset:0;
-    }
-
-    to{
-    stroke-dashoffset:-12;
-    }
+@keyframes dataflow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -12; }
 }
 
-/*related work*/
-.related-work h4{
-margin-bottom:1rem;
+/* --- Concept --- */
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
 }
 
-.related-work .card-body{
-    font-size:0.9rem;
-    line-height:1.3;
-    color: var(--white);
-} 
-.related-work-row {
-    margin: 40px;
-
+.info-block {
+  margin-bottom: 2rem;
 }
+
+.info-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey);
+  margin-bottom: 0.6rem;
+}
+
+.info-block ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.info-block ul li {
+  font-size: 0.9rem;
+  padding: 3px 0;
+  opacity: 0.8;
+}
+
+.info-block p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Tables --- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td, th {
+  border: 1px solid #444;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+/* --- Mapping Cards --- */
+
+.mapping-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mapping-card h5 {
+  margin-bottom: 18px;
+}
+
+.mapping-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: end;
+}
+
+.mapping-images > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.mapping-images img {
+  width: 100%;
+  display: block;
+}
+
+/* --- Gesture Cards --- */
+
+.gesture-card {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.gesture-card h5 {
+  margin-bottom: 18px;
+}
+
+.gesture-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  align-items: end;
+}
+
+.gesture-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.gesture-image img {
+  width: 100%;
+  display: block;
+}
+
+/* --- Code Box --- */
+
+.code-box {
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 18px;
+  background: #111;
+  font-family: monospace;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+
+.code-box pre {
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* --- Pipeline --- */
+
+.pipeline-card {
+  margin-bottom: 2rem;
+}
+
+.pipeline-card video {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+/* --- Related Work --- */
+
+.related-work h4 {
+  margin-bottom: 1rem;
+}
+
+.related-work .card-body {
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
 .card {
-    background-color: transparent!important;
+  background-color: transparent !important;
+}
+
+/* --- Responsive Tablet --- */
+
+@media (max-width: 900px) {
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mapping-images {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .mapping-images > div {
+    justify-content: flex-start;
+  }
+
+  .gesture-layout {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+/* --- Responsive Mobile --- */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--darkgrey);
+    padding: 12px 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: visible;
+  }
+
+  .sidebar a {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .hero-header,
+  section,
+  footer {
+    margin-left: 0;
+  }
+
+  .inner {
+    padding: 30px 24px;
+  }
+
+  section .inner {
+    padding-bottom: 60px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .node {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+  }
+}
+
+.concept-blocks {
+  display: flex;
+  flex-direction: column;
+}
+
+.concept-block {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.concept-block:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+
+.concept-aside {
+  font-style: italic;
+  color: var(--grey);
+  font-size: 0.95rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+}
+
+.concept-img {
+  width: 50%;
+  display: block;
+  margin: 0.5rem 0;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .concept-img {
+    width: 100%;
+  }
+}
+
+Perfekt. Hier der Code für beides:
+
+**Pipeline – HTML** (Option A mit Titel daneben und kleineren Videos):
+
+```html
+<div class="subsection">
+  <h4>Pipeline</h4>
+  <p>
+    The following videos show the real-time pipeline of the system, from motion tracking
+    to data processing and sound generation.
+  </p>
+
+  <div class="pipeline-table">
+    <div class="pipeline-row">
+      <div class="pipeline-num">01</div>
+      <div class="pipeline-label">Kinect V2</div>
+      <div class="pipeline-content">
+        <video autoplay muted loop>
+          <source src="video/pipeline_1.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Kinect captures the performer's body as skeleton data.</p>
+      </div>
+    </div>
+    <div class="pipeline-row">
+      <div class="pipeline-num">02</div>
+      <div class="pipeline-label">TouchDesigner</div>
+      <div class="pipeline-content">
+        <video autoplay muted loop>
+          <source src="video/pipeline_2.mp4" type="video/mp4">
+        </video>
+        <p class="caption">TouchDesigner processes the motion data in real time.</p>
+      </div>
+    </div>
+    <div class="pipeline-row">
+      <div class="pipeline-num">03</div>
+      <div class="pipeline-label">Ableton Live</div>
+      <div class="pipeline-content">
+        <video autoplay muted loop>
+          <source src="video/pipeline_3.mov" type="video/mp4">
+        </video>
+        <p class="caption">Parameters are mapped and sent to Ableton Live.</p>
+      </div>
+    </div>
+    <div class="pipeline-row">
+      <div class="pipeline-num">04</div>
+      <div class="pipeline-label">Sound Output</div>
+      <div class="pipeline-content">
+        <video autoplay muted loop>
+          <source src="video/pipeline_4.mov" type="video/mp4">
+        </video>
+        <p class="caption">Movement data is translated into layered sound output.</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Technische Implementierung – HTML** (Text links, Bild rechts, zweites Ableton-Bild entfernt):
+
+```html
+<section id="technical-implementation">
+  <div class="inner">
+    <div class="section-intro">
+      <p class="section-label">Technical Implementation</p>
+      <h2>TouchDesigner Ableton Data-Flow</h2>
+    </div>
+
+    <p>
+      The technical decisions follow the conceptual approach: rather than tracking absolute positions,
+      the system focuses on <em>relational</em> body data – how body parts move in relation to each other.
+      This reflects the idea of treating the body as a self-referential system, not a point in a coordinate grid.
+    </p>
+    <p>
+      Three components form the pipeline: motion tracking (Kinect V2), data processing (TouchDesigner)
+      and sound generation (Ableton Live).
+    </p>
+
+    <div class="subsection tech-step" id="step1">
+      <div class="tech-text">
+        <h4>1. Motion Tracking (Kinect V2 Sensor)</h4>
+        <p>
+          The system uses the Kinect V2 sensor to track the performer as a 3D skeleton. The Kinect
+          provides real-time joint positions (X, Y, Z) for up to 25 body joints. In this step the raw
+          skeletal data is captured continuously. Each joint delivers absolute spatial coordinates,
+          which form the basis for all later calculations.
+        </p>
+      </div>
+      <div class="tech-img">
+        <img src="img/motion-tracking.png" />
+      </div>
+    </div>
+
+    <div class="subsection tech-step" id="step2">
+      <div class="tech-text">
+        <h4>2. Data Processing (TouchDesigner)</h4>
+        <p>
+          TouchDesigner handles all data interpretation, transformation and motion parameter extraction.
+          The raw joint positions from the Kinect are processed into relational parameters. Instead of
+          using absolute coordinates, the system calculates relative body parameters. These relational
+          measures are more intuitive and stable for sound control.
+        </p>
+      </div>
+      <div class="tech-img">
+        <img src="img/TD_DataFlow.png" />
+      </div>
+    </div>
+
+    <div class="subsection tech-step" id="step3">
+      <div class="tech-text">
+        <h4>3. Sound Synthesis (Ableton Live)</h4>
+        <p>
+          Ableton Live receives the processed motion parameters and maps them to different sound layers
+          which respond to different aspects of the performer's movement, such as heartbeat intensity,
+          breathing noise, drone expansion, or spatial panning. Each layer is controlled by a
+          corresponding OSC parameter.
+        </p>
+      </div>
+      <div class="tech-img">
+        <img src="img/sound_synthesis.png" />
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+**CSS** (ans Ende von style.css anfügen):
+
+```css
+/* --- Pipeline mit Label --- */
+
+.pipeline-table {
+  border: 1px solid var(--darkgrey);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.pipeline-row {
+  display: grid;
+  grid-template-columns: 60px 160px 1fr;
+  border-bottom: 1px solid var(--darkgrey);
+  align-items: center;
+}
+
+.pipeline-row:last-child {
+  border-bottom: none;
+}
+
+.pipeline-num {
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--grey);
+  font-family: 'Courier New', Courier, monospace;
+  border-right: 1px solid var(--darkgrey);
+  align-self: stretch;
+  padding: 12px 0;
+}
+
+.pipeline-label {
+  font-size: 0.8rem;
+  color: var(--grey);
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0 14px;
+  border-right: 1px solid var(--darkgrey);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.pipeline-content {
+  padding: 12px 16px;
+  width: 100%;
+}
+
+.pipeline-content video {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}
+
+.pipeline-content .caption {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+/* --- Tech Steps --- */
+
+.tech-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.tech-step:first-of-type {
+  border-top: none;
+}
+
+.tech-text h4 {
+  margin-top: 0;
+}
+
+.tech-img img {
+  width: 100%;
+  display: block;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .pipeline-row {
+    grid-template-columns: 36px 1fr;
+  }
+
+  .pipeline-label {
+    display: none;
+  }
+
+  .pipeline-content {
+    width: 100%;
+  }
+
+  .tech-step {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Related Work --- */
+
+.related-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 2rem;
+  border: 1px solid var(--darkgrey);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--darkgrey);
+  border-bottom: 1px solid var(--darkgrey);
+}
+
+.related-card:nth-child(even) {
+  border-right: none;
+}
+
+.related-card:nth-child(3),
+.related-card:nth-child(4) {
+  border-bottom: none;
+}
+
+.related-thumb {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--darkgrey);
+}
+
+.related-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.related-thumb:hover img {
+  opacity: 1;
+}
+
+.related-play {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 0.8rem;
+  color: var(--white);
+  opacity: 0.6;
+}
+
+.related-body {
+  padding: 16px 18px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.related-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey);
+  margin: 0;
+}
+
+.related-card h5 {
+  margin: 4px 0 0;
+  font-size: 1rem;
+}
+
+.related-artist {
+  font-size: 0.8rem;
+  color: var(--grey);
+  margin: 0;
+  font-style: italic;
+}
+
+.related-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 600px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-card:nth-child(even) {
+    border-right: none;
+  }
+
+  .related-card:nth-child(3) {
+    border-bottom: 1px solid var(--darkgrey);
+  }
+
+  .related-card:nth-child(4) {
+    border-bottom: none;
+  }
+}
+
+.related-thumb--text {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: var(--darkgrey);
+  min-height: 80px;
+}
+
+.related-thumb-title {
+  font-size: 0.85rem;
+  color: var(--white);
+  opacity: 0.5;
+  font-style: italic;
 }

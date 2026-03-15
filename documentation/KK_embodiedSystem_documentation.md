@@ -1,16 +1,11 @@
+# *Embodied System - Sensing the digital*
 
-# Documentation : *Embodied System - Sensing the digital*
-# Table of Contents
-
-![Title](img/line.png)
-
-![Title](img/title-body.png)
-
-# Work Diary
-### Embodied System – Sensing the Digital
 Katharina Kleinhans · First Term Project WiSe 25/26 · Filmuniversität KONRAD WOLF Babelsberg
 
 ---
+
+# Project Documentation
+
 
 ## Table of Contents
 
@@ -59,7 +54,7 @@ PoseNet mainly helped me to explore the workflow and get a first understanding o
 
 [PoseNet GitHub Link](https://github.com/runwayml/touchDesigner/blob/master/PoseNet/TDPoseNet/README.md)
 
-![Posenet Mediapipe](docImg/firstSetup_mediapipe.png)
+![Posenet Mediapipe](img/firstSetup_mediapipe.png)
 
 **Steps**
 - setting up the PoseNet pipeline
@@ -98,7 +93,7 @@ Since I had no previous experience with Max/MSP, I decided to work with TouchDes
 
 The TDAbleton package works through Ableton's MIDI Remote Scripts system and allows two-way communication between TouchDesigner and Ableton via OSC. This was a workflow I was not familiar with at the time.
 
-![PoseNet Ableton](docImg/posenet-ableton.png)
+![PoseNet Ableton](img/posenet-ableton.png)
 
 **Steps**
 - researching possible audio environments
@@ -136,7 +131,7 @@ The TDAbleton package works through Ableton's MIDI Remote Scripts system and all
 
 A large part of my process involved experimenting with and learning sound production in Ableton Live. Regarding my concept of transferring mental states into sound, I started experimenting without setting strict limits for myself, trying instead to find atmospheres that could express my conceptual idea.
 
-![feelings experiments](docImg/ABL-feelings.png)
+![feelings experiments](img/ABL-feelings.png)
 
 **Steps**
 - creating a first audio file that combined multiple layers of synthesizers, recordings, and sample tracks
@@ -168,7 +163,7 @@ A large part of my process involved experimenting with and learning sound produc
 
 At the beginning, I focused especially on creating low-frequency tracks with the Vital synthesizer plugin. Since my initial idea was that the height of the body should change frequency levels, I wanted to start with simple drone sounds.
 
-![vital](docImg/vital.png)
+![vital](img/vital.png)
 
 - experiments with Vital in Ableton Live
 - concept: low frequencies and vibration as a base element of motion and emotion
@@ -210,23 +205,23 @@ At this point, I defined three values that I wanted to test:
 1. **General body height (`bodyheight`)**
    *Calculation:* selecting the y-position of nose / head / shoulder from the Kinect CHOP
 
-   ![value bodyheight](docImg/TD-bodyheight.png)
+   ![value bodyheight](img/TD-bodyheight.png)
 
 2. **Distance between hands (`distance`)**
    *Calculation:* subtracting the position data of the right hand from the position data of the left hand
 
-   ![value distance](docImg/TD-distance.png)
+   ![value distance](img/TD-distance.png)
 
 3. **Speed of the body (`speed`)**
    *Calculation:* calculating the average of the x, y, z position values of the shoulders and hips to determine a value for the center of the body. The Slope CHOP can then be used to analyze the speed.
 
-   ![value speed](docImg/TD-speed.png)
+   ![value speed](img/TD-speed.png)
 
 #### Data Visualization
 
 To make the behaviour of the values recognizable and comprehensible, I supplemented the file with a visualization of the data.
 
-![interface](docImg/TD-interface.png)
+![interface](img/TD-interface.png)
 
 The interface consisted of:
 - selecting / calculating motion data from the sensor
@@ -288,9 +283,9 @@ The idea was to make the data more controllable through:
 
 **Goal:** *Build a calibration system that sets minimum and maximum values at the beginning of the performance.*
 
-![interface](docImg/TD-calibration_minmax.png)
+![interface](img/TD-calibration_minmax.png)
 
-![interface](docImg/TD-calibration-timer.png)
+![interface](img/TD-calibration-timer.png)
 
 **Steps**
 - building a calibration system with dynamic values and visualization
@@ -328,9 +323,9 @@ In the context of the acting movement project, we were able to rent the theater 
 
 **Goal:** *Test the refined technical setup with Kinect V2, sound material, and calibration.*
 
-![testing](docImg/testing.png)
+![testing](img/testing.png)
 
-![testing](docImg/testing-3.jpg)
+![testing](img/testing-3.jpg)
 
 **Steps**
 - testing the calibration
@@ -395,7 +390,7 @@ Research: [Euclidean distance](https://de.wikipedia.org/wiki/Euklidischer_Abstan
 
 Free Source TouchDesigner Container: [Distance Calculator](https://github.com/gwangyu-lee/TouchDesigner-Distance-Calculator)
 
-![Distance Calculator](docImg/TD-distance-calculator.png)
+![Distance Calculator](img/TD-distance-calculator.png)
 
 Using Euclidean distance became important because it allowed me to work with values that describe actual relations between joints, instead of relying on unstable axis-based calculations.
 
@@ -424,7 +419,7 @@ This included values such as:
 
 **Goal:** *Test the technical changes based on relative motion data and newly implemented sound ideas.*
 
-![Third test](docImg/0603_testing-2.png)
+![Third test](img/0603_testing-2.png)
 
 **Steps**
 - confirming that relative data is much more reliable
@@ -486,7 +481,7 @@ The pipeline consisted of:
 
 At this stage, organizing project files and separating test setups from more stable system versions also became important, because the technical process had become increasingly complex.
 
-![Joint Visualization](docImg/TD_jointVisualization.png)
+![Joint Visualization](img/TD_jointVisualization.png)
 
 #### Sound Refinements & Decisions
 
@@ -590,7 +585,7 @@ During the refinement workflow, I got additional ideas for more concrete and con
 - closed arms in front of the chest
 - arm speed → triggers sample
 
-![ArmSpeed](docImg/TD-handSpeedTrigger.png)
+![ArmSpeed](img/TD-handSpeedTrigger.png)
 
 These ideas later fed into the gesture detection system.
 
@@ -616,7 +611,7 @@ These ideas later fed into the gesture detection system.
 
 **Goal:** *Trigger sounds in Ableton directly from motion-based values in TouchDesigner.*
 
-![midi-setup](docImg/midi-values.png)
+![midi-setup](img/midi-values.png)
 
 **Steps**
 - connecting TouchDesigner to Ableton Live via MIDI / OSC using **TDAbleton**
@@ -650,7 +645,7 @@ These ideas later fed into the gesture detection system.
 
 **Goal:** *Extract concrete gesture states from body tracking data and forward them as trigger signals for sound or visual processes.*
 
-![gesture-detection](docImg/TD_gestureDetection.png)
+![gesture-detection](img/TD_gestureDetection.png)
 
 Implemented gestures included hands on chest, hands above head and crouch / low torso *(see Gesture Detection at Project Presentation)*
 
@@ -698,7 +693,7 @@ Implemented gestures included hands on chest, hands above head and crouch / low 
 
 **Goal:** *Detect moments of stillness based on body velocity and convert them into stable gesture triggers.*
 
-![gesture-detection](docImg/first-python-skript.png)
+![gesture-detection](img/first-python-skript.png)
 
 **Steps**
 - using the `SPEED_body` channel from the tracking data as an overall movement measure

@@ -757,10 +757,7 @@ An important artistic development was the shift from thinking about the body mai
 
 ## Narrative Development
 
-The project does not follow a classical linear narrative. Instead, the narrative development took place through the idea of a dramaturgical landscape.
-I worked with the assumption that dramaturgy does not have to mean fixed story structure, but can also emerge through conditions, states, and transformations.
-
-The final system therefore creates a setting in which different emotional or physical states can be explored rather than narrated explicitly.
+The project does not follow a classical linear narrative but narration emerges through conditions, states, and transformations. The narrative development took place through the idea of a dramaturgical landscape. The finalmcreates a setting in which different emotional or physical states can be explored rather than narrated explicitly.
 
 ## Audio-Visual Design
 
@@ -774,7 +771,7 @@ On the audio side, I developed a layered sound environment consisting of drones,
 
 ## Software Development
 
-Software development was a substantial part of the project.
+Not direct software development, but in the sense that I had to communicate across different software systems in a very interdisciplinary way.
 
 I worked with:
 - TouchDesigner
@@ -792,7 +789,7 @@ This included:
 
 ## Hardware and Pipeline Development
 
-The project also involved hardware and pipeline development.The hardware setup strongly influenced the project, especially in relation to CPU overload, tracking reliability, and latency. Building a stable pipeline became one of the most important technical tasks.
+The project also involved hardware and pipeline development. The hardware setup strongly influenced the project, especially in relation to CPU overload, tracking reliability, and latency. Building a stable pipeline became one of the most important technical tasks.
 
 I worked with:
 - laptop camera during early exploration
@@ -805,18 +802,16 @@ I worked with:
 ## Algorithms
 
 Algorithmic aspects of the project included:
+
 - motion parameter calculations
-- body speed calculations
-- Euclidean distance calculations
 - threshold-based gesture recognition
-- filtering and smoothing
 
 
 ## Research / Experimentation
 
 Research and experimentation were core to the entire process. The project developed iteratively through cycles of testing, failure, revision, and refinement.
 
-This included:
+The process included:
 - researching motion tracking tools (PoseNet, Kinect V2)
 - researching calibration and normalization methods
 - experimenting with mappings between movement and sound
@@ -824,98 +819,11 @@ This included:
 - integrating feedback from tests into technical redesigns
 
 
-## Reflection on Technical Choices
-
-One of the most important technical choices was moving away from absolute coordinates and toward relative motion data.
-
-I made this choice because absolute coordinates depended too heavily on camera perspective, room setup, and performer position. This made the values unstable and difficult to control.
-
-What worked well:
-- relative data
-- Euclidean distance calculations
-- simplified mappings
-- gesture detection through threshold combinations
-- separating TouchDesigner and Ableton onto two laptops
-
-What did not work well:
-- calibration as a main solution
-- direct pitch mapping
-- too many simultaneous sound layers
-- relying on absolute body coordinates
-- trying to control overly complex systems too early
-
-If I were to continue the project, I would probably:
-- simplify even earlier
-- test more often with performers from the beginning
-- define a clearer final sound dramaturgy sooner
-- work on latency reduction even more directly
-- potentially explore a more robust hardware setup
-
-## Reflection on MVP and Best-Case Scenario
-
-My minimum viable product was a system that could reliably track body movement and map it to a coherent sound environment in real time.
-
-I achieved this in the final phase of the project:
-- motion data could be tracked
-- selected parameters were stable enough
-- gesture states could be detected
-- sound could be shaped continuously and through triggers
-
-What I did not fully achieve:
-- a fully polished final performance setup
-- more advanced spatial / binaural sound design
-- a broader range of refined gesture compositions
-- a final system that is already fully stage-ready in every respect
-
-My best-case scenario would have included a more advanced and fully composed performative environment with stronger integration of narrative, sound dramaturgy, and potentially visual layers.
-
-The reason I did not fully reach this was mainly the amount of technical work needed to build a stable foundation.
-
-## Challenge of My Comfort Zone
-
-A major part of this project was outside my comfort zone.
-
-New for me were:
-- working deeply with motion tracking data
-- using Kinect and TouchDesigner in this way
-- working with OSC / MIDI communication
-- scripting Python inside TouchDesigner
-- developing a real-time interactive audio pipeline
-- making technical decisions under artistic constraints
-
-What I learned:
-- how much preprocessing motion data needs
-- how strongly technical reliability affects artistic quality
-- how important reduction and clarity are in interactive systems
-- how valuable testing with performers is
-
-The most difficult part for me was balancing technical complexity and artistic intention without getting lost in either side.
-
-## Reflection on My Original Work Plan and Timeline
-
-I did not fully follow my original plan, mainly because I underestimated how technically demanding motion tracking and data preprocessing would be.
-
-A large amount of time went into:
-- stabilizing motion data
-- solving clipping and CPU issues
-- testing sensors
-- redesigning the mapping system
-- rebuilding the setup from absolute to relative data
-
-Even though this slowed down other parts of the project, especially final composition and polish, it was necessary.
-
-In retrospect, the deviation from the original plan was not simply a delay, but an important part of the process. It allowed the project to become more focused, technically grounded, and conceptually coherent.
-
-The most important shift in the timeline was that I had to move from a broad exploratory approach toward a much more reduced and system-oriented approach. This turned out to be one of the most valuable decisions in the whole project.
-<br><br>
-
-<br><br><br>
-
 # Reflection 
 
 ## Reflection of technical choices
 
-The three most important decisions I made during my process: 
+*The three most important decisions I made during my process:*
 <br>
 
 1. **technical setup components**
@@ -934,7 +842,7 @@ The three most important decisions I made during my process:
 <br><br>
 
 ## Reflection on your Minimal viable product and Best-case scenario plans
-* What did you archive, what not and why?
+*What did you archive, what not and why?*
 
 In my projectplan I suggested this as a best case scenario:
 
@@ -966,8 +874,8 @@ Even though I was frustrated at times about seemingly “not achieving” my goa
 
 
 ## Challenge of your comfort zone
-* What was new for you, and what did you learn?
- * What was the most difficult for you?
+*What was new for you, and what did you learn?*
+*What was the most difficult for you?*
 
 Following on from that, it was also what took me out of my comfort zone. Interacting with other students, even though I didn't feel confident about my work yet.
 Both components—sound and motion tracking—were new to me (at least in this dimension) and sometimes challenged me greatly to achieve the quality I was striving for.
@@ -992,7 +900,7 @@ Sound production:
 
 
 ## Reflection original work plan with timeline 
-    * To you follow your plan and if not, why not?
+*To you follow your plan and if not, why not?*
 
 As already mentioned, my focus shifted from the artistic concept to the technical aspects during the process. Through user testing with the actors, I realized that handling motion data requires much more attention than I had planned for.
 Unfortunately, my planning was also generally unrealistic in terms of time with regard to other projects.

@@ -3,7 +3,7 @@
   --darkgrey: #343434;
   --grey: #808080;
   --white: #d7d7d7;
-  --sidebar-width: 200px;
+  --sidebar-width: 20%;
 }
 
 *, *::before, *::after {
